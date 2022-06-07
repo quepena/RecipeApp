@@ -1,39 +1,103 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { FlatList, StyleSheet, Text, View, Image, SafeAreaView, Alert, TouchableWithoutFeedback } from 'react-native';
 
 const RecipesList = () => {
+    const food = [
+        {
+            id: 1,
+            name: 'Pizza',
+            difficulty: 'Medium',
+            time: '150 minutes',
+            servings: '2',
+            calories: '720 kcal',
+        },
+        {
+            id: 2,
+            name: 'Mac\'n\'cheese',
+            difficulty: 'Easy',
+            time: '30 minutes',
+            servings: '2',
+            calories: '320 kcal',
+        },
+        {
+            id: 3,
+            name: 'Sushi',
+            difficulty: 'Medium',
+            time: '100 minutes',
+            servings: '2',
+            calories: '400 kcal',
+        },
+        {
+            id: 4,
+            name: 'Fish and chips',
+            difficulty: 'Easy',
+            time: '40 minutes',
+            servings: '4',
+            calories: '540 kcal',
+        },
+        {
+            id: 5,
+            name: 'French Fries',
+            difficulty: 'Easy',
+            time: '30 minutes',
+            servings: '3',
+            calories: '500 kcal',
+        },
+        {
+            id: 6,
+            name: 'Salad Cesar',
+            difficulty: 'Easy',
+            time: '20 minutes',
+            servings: '4',
+            calories: '300 kcal',
+        },
+        {
+            id: 7,
+            name: 'Fruit salad',
+            difficulty: 'Easy',
+            time: '20 minutes',
+            servings: '2',
+            calories: '330 kcal',
+        }
+    ];
+
+    const getItem = (name) => {
+        Alert.alert(name);
+    }
+
+    const ItemRender = ({ name, difficulty, time, servings, calories }) => (
+        <TouchableWithoutFeedback onPress={() => getItem(name)}>
+            <View style={styles.view}>
+                <Image source={require("../food.jpg")} style={styles.img} />
+                <Text style={styles.text}>
+                    <Text style={styles.item}>{name}</Text>
+                    <Text style={styles.info}>
+                        <Text>{difficulty}</Text>
+                        <Text>{time}</Text>
+                        <Text>{servings}</Text>
+                        <Text>{calories}</Text>
+                    </Text>
+                </Text>
+            </View>
+        </TouchableWithoutFeedback>
+    );
+
     return (
-        <FlatList
-            data={[
-                { key: 'Devin' },
-                { key: 'Dan' },
-                { key: 'Dominic' },
-                { key: 'Jackson' },
-                { key: 'James' },
-                { key: 'Joel' },
-                { key: 'John' },
-                { key: 'Jillian' },
-                { key: 'Jimmy' },
-                { key: 'Jul' },
-                { key: 'Dev' },
-                { key: 'Da' },
-                { key: 'Doic' },
-                { key: 'Jaon' },
-                { key: 'Jas' },
-                { key: 'Jol' },
-                { key: 'Jn' },
-                { key: 'Jlian' },
-                { key: 'Jmy' },
-                { key: 'Jlie' },
-            ]}
-            renderItem={({ item }) => (
-                <TouchableOpacity style={styles.view}>
-                    <Image source={require("../food.jpg")} style={styles.img} />
-                    <Text style={styles.item}>{item.key}</Text>
-                </TouchableOpacity>
-            )}
-        />
+        <SafeAreaView style={styles.view}>
+            <FlatList
+                contentContainerStyle={{ paddingBottom: '25%' }}
+                data={food}
+                renderItem={({ item }) =>
+                    <ItemRender
+                        name={item.name}
+                        difficulty={item.difficulty}
+                        time={item.time}
+                        servings={item.servings}
+                        calories={item.calories}
+                    />}
+                keyExtractor={item => item.id}
+            />
+        </SafeAreaView>
     );
 }
 
@@ -48,11 +112,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    text: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
     item: {
         padding: 10,
         fontSize: 18,
         height: 44,
         margin: '3%'
+    },
+    info: {
+        flexDirection: 'row',
+        justifyContent: 'space-around'
     },
 });
 
