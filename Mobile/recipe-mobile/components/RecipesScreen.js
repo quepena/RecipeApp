@@ -1,13 +1,21 @@
-import { View, Text } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
+import RecipesList from "./RecipesList"
 import SearchBar from "./SearchBar"
 
 const RecipesScreen = () => {
     return (
-        <View>
+        <View style={styles.view}>
             <SearchBar/>
-            <Text>RecipesScreen</Text>
+            <RecipesList/>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    view: {
+        flex: 1,
+        backgroundColor: 'white'
+    },
+})
 
 export default RecipesScreen

@@ -12,17 +12,12 @@ const SearchBar = () => {
 
 const styles = StyleSheet.create({
     input: {
-        borderWidth: 1,
-        borderColor: "#fff",
-        borderRadius: 10,
-        height: "38%",
-        margin: '3%',
-        paddingLeft: '4%',
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 10 },
-        shadowOpacity: 2,
-        shadowRadius: 2,
-        elevation: 1,
+        margin: '4%',
+        padding: '3%',
+        backgroundColor: 'gainsboro',
+        borderColor: 'transparent',
+        borderRadius: 20,
+        fontSize: 15
     }
 })
 
