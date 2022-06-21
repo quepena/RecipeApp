@@ -1,5 +1,4 @@
 import { Sequelize } from 'sequelize';
-import CategoryModel from './categoryModel.js';
 
 const RecipeModel = (sequelize, { DataTypes }) => {
     const Recipe = sequelize.define('recipes', {
@@ -37,6 +36,12 @@ const RecipeModel = (sequelize, { DataTypes }) => {
 
     Recipe.associate = (models) => {
         Recipe.belongsTo(models.CategoryModel)
+    }
+
+    Recipe.getRecipes = async() => {
+        const recipes = Recipe.findAll()
+        
+        return recipes
     }
 
     return Recipe

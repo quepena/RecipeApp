@@ -1,5 +1,4 @@
 import Sequelize from 'sequelize';
-import RecipeModel from './recipeModel.js';
 
 const CategoryModel = (sequelize, { DataTypes }) => {
     const Category = sequelize.define('categories', {

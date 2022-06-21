@@ -1,8 +1,9 @@
 import express from 'express'
-import { getRecipes } from '../controllers/recipeController.js';
+import { getRecipes, getRecipeById } from '../controllers/recipeController.js';
 
 const router = express.Router();
 
-router.route('/').get(getRecipes)
+router.get('/', getRecipes)
+router.get('/:id', getRecipeById)
 
 export default router;
