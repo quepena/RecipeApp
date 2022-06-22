@@ -1,14 +1,20 @@
 import './App.css';
 import Header from './components/header';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RecipesList from './components/recipesList';
+import RecipeDetails from './components/recipeDetails';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
       <div className='container'>
+        <Routes>
+          <Route path='/' element={<RecipesList />} exact />
+          <Route path='/recipes/:id' element={<RecipeDetails />} exact />
+        </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
