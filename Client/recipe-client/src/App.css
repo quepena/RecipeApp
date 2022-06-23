@@ -41,3 +41,59 @@ header {
   border-color: red;
   background-color: red;
 }
+
+.recipe-container {
+  border: 2px solid gainsboro;
+  border-radius: 5%;
+  height: 5%;
+  width: 20%;
+  margin-top: 3%;
+  padding: 1%;
+  text-align: center;
+}
+
+.img-recipe {
+  height: 100%;
+  width: 100%;
+  border-radius: 5%;
+}
+
+.recipe-items {
+  display: flex;
+  justify-content: space-around;
+  margin: 10% 0 10% 0;
+  color: #8c8c8c;
+}
+
+.recipe-item {
+  font-size: 1.2em;
+  margin-right: 0.3em;
+}
+
+.recipe-det-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-recipe-det {
+  height: 35%;
+  width: 35%;
+}
+
+.recipe-det-items {
+  margin-bottom: 20%;
+  margin-right: 45%;
+}
+
+.recipe-items div {
+  border: 1px solid #8c8c8c;
+  background-color: #8c8c8c;
+  border-radius: 20%;
+  padding: 5%;
+  color: whitesmoke;
+  margin: 5%;
+}
+
+.recipe-items div .recipe-item {
+  color: whitesmoke;
+}

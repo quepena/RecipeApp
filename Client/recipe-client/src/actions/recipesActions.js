@@ -1,5 +1,5 @@
 import axios from "axios";
-import { 
+import {
     RECIPES_LIST_REQUEST,
     RECIPES_LIST_SUCCESS,
     RECIPES_LIST_FAIL,
@@ -7,6 +7,10 @@ import {
     RECIPE_DETAILS_REQUEST,
     RECIPE_DETAILS_SUCCESS,
     RECIPE_DETAILS_FAIL,
+
+    RECIPE_ADD_TO_FAVS_SUCCESS,
+
+    RECIPE_REMOVE_FROM_FAVS_SUCCESS,
 } from "../constants/recipesConstants"
 
 export const recipesList = () => async (dispatch) => {
@@ -47,4 +51,18 @@ export const recipeDetails = (id) => async (dispatch) => {
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
+}
+
+export const recipeAddToFavs = (recipe) => async (dispatch) => {
+    dispatch({
+        type: RECIPE_ADD_TO_FAVS_SUCCESS,
+        payload: recipe
+    })
+}
+
+export const recipeDeleteFromFavs = (recipe) => async (dispatch) => {
+    dispatch({
+        type: RECIPE_REMOVE_FROM_FAVS_SUCCESS,
+        payload: recipe
+    })
 }

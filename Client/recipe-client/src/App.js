@@ -11,7 +11,7 @@ function App() {
       <div className='container'>
         <Routes>
           <Route path='/' element={<RecipesList />} exact />
-          <Route path='/recipes/:id' element={<RecipeDetails />} exact />
+          <Route path='/recipes/:recipeId' element={<RecipeDetails />} exact />
         </Routes>
       </div>
     </BrowserRouter>
