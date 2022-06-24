@@ -20,23 +20,18 @@ const RecipesList = () => {
     }, [dispatch])
 
     const { favs } = useSelector(state => state.favReducer);
-
-    const addToFavs = recipe => {
-        dispatch(recipeAddToFavs(recipe));
-    }
-    const removeFromFavs = recipe => {
-        dispatch(recipeDeleteFromFavs(recipe));
-    }
+    console.log(favs);
 
     const handleAddToFavs = recipe => {
-        addToFavs(recipe)
+        dispatch(recipeAddToFavs(recipe));
     }
 
     const handleRemoveFromFavs = recipe => {
-        removeFromFavs(recipe)
+        dispatch(recipeDeleteFromFavs(recipe));
     }
 
     const ifExists = recipe => {
+        console.log(favs[3]);
         if (favs.filter(item => item.id === recipe.id).length > 0) {
             return true;
         }

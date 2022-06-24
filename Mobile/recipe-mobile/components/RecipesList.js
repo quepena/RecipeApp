@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View, Image, SafeAreaView, Alert, TouchableWithoutFeedback } from 'react-native';
+import { recipesList } from '../actions/recipesActions';
+import { useDispatch, useSelector } from "react-redux";
 
 const RecipesList = () => {
+    const dispatch = useDispatch();
+
+    const recipeList = useSelector(state => state.recipeList);
+    const { loading, error, recipes } = recipeList;
+
+    useEffect(() => {
+        dispatch(recipesList());
+    }, [dispatch])
+
+    console.log(recipes)
+
     const food = [
         {
             id: 1,
@@ -65,10 +78,10 @@ const RecipesList = () => {
         Alert.alert(name);
     }
 
-    const ItemRender = ({ name, difficulty, time, servings, calories }) => (
+    const ItemRender = ({ name, difficulty, time, servings, calories, photo }) => (
         <TouchableWithoutFeedback onPress={() => getItem(name)}>
             <View style={styles.view}>
-                <Image source={require("../food.jpg")} style={styles.img} />
+                <Image source={{uri: photo}} style={styles.img} />
                 <Text style={styles.text}>
                     <Text style={styles.item}>{name}</Text>
                     <Text style={styles.info}>
@@ -86,7 +99,7 @@ const RecipesList = () => {
         <SafeAreaView style={styles.view}>
             <FlatList
                 contentContainerStyle={{ paddingBottom: '25%' }}
-                data={food}
+                data={recipes}
                 renderItem={({ item }) =>
                     <ItemRender
                         name={item.name}
@@ -94,6 +107,7 @@ const RecipesList = () => {
                         time={item.time}
                         servings={item.servings}
                         calories={item.calories}
+                        photo={item.photo}
                     />}
                 keyExtractor={item => item.id}
             />

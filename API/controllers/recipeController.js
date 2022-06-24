@@ -39,4 +39,9 @@ const getRecipeById = asyncHandler(async (req, res) => {
     res.json({ result: recipe });
 })
 
-export { getRecipes, getRecipeById };
+const getCategories = asyncHandler(async (req, res) => {
+    const categories = await models.CategoryModel.findAll()
+    res.json({ result: categories });
+})
+
+export { getRecipes, getRecipeById, getCategories };

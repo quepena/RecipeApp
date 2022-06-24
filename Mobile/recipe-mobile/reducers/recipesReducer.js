@@ -38,20 +38,20 @@ export const recipeDetailsReducer = (state = { recipe: {} }, action) => {
     }
 }
 
-const initialState = {
-    favs: []
-}
+// const initialState = {
+//     favs: []
+// }
 
-export const favsReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case RECIPE_ADD_TO_FAVS_SUCCESS:
-            return { ...state, favs: [...state.favs, action.payload] };
-        case RECIPE_REMOVE_FROM_FAVS_SUCCESS:
-            return {
-                ...state,
-                favs: state.favs.filter(fave => fave.id !== action.payload.id)
-            };
-        default:
-            return state;
-    }
-}
+// export const favsReducer = (state = initialState, action) => {
+//     switch (action.type) {
+//         case RECIPE_ADD_TO_FAVS_SUCCESS:
+//             return { ...state, favs: [...state.favs, action.payload] };
+//         case RECIPE_REMOVE_FROM_FAVS_SUCCESS:
+//             return {
+//                 ...state,
+//                 favs: state.favs.filter(fave => fave.id !== action.payload.id)
+//             };
+//         default:
+//             return state;
+//     }
+// }
