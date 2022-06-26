@@ -7,9 +7,9 @@ import {
     RECIPE_DETAILS_SUCCESS,
     RECIPE_DETAILS_FAIL,
 
-    RECIPE_ADD_TO_FAVS_SUCCESS,
-
-    RECIPE_REMOVE_FROM_FAVS_SUCCESS,
+    CATEGORIES_LIST_REQUEST,
+    CATEGORIES_LIST_SUCCESS,
+    CATEGORIES_LIST_FAIL,
 } from "../constants/recipesConstants";
 
 export const recipesListReducer = (state = { recipes: [] }, action) => {
@@ -38,19 +38,14 @@ export const recipeDetailsReducer = (state = { recipe: {} }, action) => {
     }
 }
 
-const initialState = {
-    favs: []
-}
-
-export const favsReducer = (state = initialState, action) => {
+export const categoriesListReducer = (state = { categories: [] }, action) => {
     switch (action.type) {
-        case RECIPE_ADD_TO_FAVS_SUCCESS:
-            return { ...state, favs: [...state.favs, action.payload] };
-        case RECIPE_REMOVE_FROM_FAVS_SUCCESS:
-            return {
-                ...state,
-                favs: state.favs.filter(fave => fave.id !== action.payload.id)
-            };
+        case CATEGORIES_LIST_REQUEST:
+            return { loading: true }
+        case CATEGORIES_LIST_SUCCESS:
+            return { loading: false, categories: action.payload }
+        case CATEGORIES_LIST_FAIL:
+            return { loading: false, error: action.payload }
         default:
             return state;
     }

@@ -3,6 +3,7 @@ import Header from './components/header';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RecipesList from './components/recipesList';
 import RecipeDetails from './components/recipeDetails';
+import RecipePage from './components/recipePage';
 
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       <Header />
       <div className='container'>
         <Routes>
-          <Route path='/' element={<RecipesList />} exact />
+          <Route path='/' element={<RecipePage />} exact />
           <Route path='/recipes/:recipeId' element={<RecipeDetails />} exact />
+          <Route path="/search/:keyword" element={<RecipesList />} exact/>
         </Routes>
       </div>
     </BrowserRouter>

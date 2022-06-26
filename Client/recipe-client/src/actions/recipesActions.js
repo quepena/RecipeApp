@@ -8,9 +8,9 @@ import {
     RECIPE_DETAILS_SUCCESS,
     RECIPE_DETAILS_FAIL,
 
-    RECIPE_ADD_TO_FAVS_SUCCESS,
-
-    RECIPE_REMOVE_FROM_FAVS_SUCCESS,
+    CATEGORIES_LIST_REQUEST,
+    CATEGORIES_LIST_SUCCESS,
+    CATEGORIES_LIST_FAIL,
 } from "../constants/recipesConstants"
 
 export const recipesList = () => async (dispatch) => {
@@ -53,16 +53,22 @@ export const recipeDetails = (id) => async (dispatch) => {
     }
 }
 
-export const recipeAddToFavs = (recipe) => async (dispatch) => {
-    dispatch({
-        type: RECIPE_ADD_TO_FAVS_SUCCESS,
-        payload: recipe
-    })
-}
+export const categoriesList = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: CATEGORIES_LIST_REQUEST
+        })
 
-export const recipeDeleteFromFavs = (recipe) => async (dispatch) => {
-    dispatch({
-        type: RECIPE_REMOVE_FROM_FAVS_SUCCESS,
-        payload: recipe
-    })
+        const { data } = await axios.get(`/api/recipes/categories`);
+
+        dispatch({
+            type: CATEGORIES_LIST_SUCCESS,
+            payload: data.result
+        })
+    } catch (error) {
+        dispatch({
+            type: CATEGORIES_LIST_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
 }

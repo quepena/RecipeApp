@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View, Image, SafeAreaView, Alert, TouchableWithoutFeedback } from 'react-native';
-import { recipesList } from '../actions/recipesActions';
+import { recipesList, recipeAddToFavs, recipeDeleteFromFavs } from '../actions/recipesActions';
 import { useDispatch, useSelector } from "react-redux";
 
 const RecipesList = () => {
@@ -9,9 +9,30 @@ const RecipesList = () => {
     const recipeList = useSelector(state => state.recipeList);
     const { loading, error, recipes } = recipeList;
 
+    const { favs } = useSelector(state => state.favReducer);
+
     useEffect(() => {
         dispatch(recipesList());
     }, [dispatch])
+
+    const addToFavs = recipe => dispatch(addBookmark(recipe));
+    const removeFromFavs = recipe => dispatch(removeBookmark(recipe));
+
+    const handleAddFavs = recipe => {
+        addToFavs(recipe);
+    };
+
+    const handleRemoveFavs = recipe => {
+        removeFromFavs(recipe);
+    };
+
+    const ifExists = recipe => {
+        if (favs.filter(item => item.id === recipe.id).length > 0) {
+            return true;
+        }
+
+        return false;
+    };
 
     console.log(recipes)
 
@@ -78,19 +99,21 @@ const RecipesList = () => {
         Alert.alert(name);
     }
 
-    const ItemRender = ({ name, difficulty, time, servings, calories, photo }) => (
-        <TouchableWithoutFeedback onPress={() => getItem(name)}>
+    const ItemRender = ({ id, name, difficulty, time, servings, calories, photo }) => (
+        // <TouchableWithoutFeedback onPress={() => getItem(name)}>
+        <TouchableWithoutFeedback onPress={ifExists(getItem(id)) ? handleRemoveBookmark(getItem(id)) : handleAddBookmark(getItem(id))}>
             <View style={styles.view}>
-                <Image source={{uri: photo}} style={styles.img} />
-                <Text style={styles.text}>
+                {/* <Image source={{uri: photo}} style={styles.img} /> */}
+                <Image source={require('../food.jpg')} style={styles.img} />
+                <View style={styles.text}>
                     <Text style={styles.item}>{name}</Text>
-                    <Text style={styles.info}>
+                    <View style={styles.info}>
                         <Text>{difficulty}</Text>
                         <Text>{time}</Text>
                         <Text>{servings}</Text>
                         <Text>{calories}</Text>
-                    </Text>
-                </Text>
+                    </View>
+                </View>
             </View>
         </TouchableWithoutFeedback>
     );
@@ -99,9 +122,11 @@ const RecipesList = () => {
         <SafeAreaView style={styles.view}>
             <FlatList
                 contentContainerStyle={{ paddingBottom: '25%' }}
-                data={recipes}
+                // data={recipes}
+                data={food}
                 renderItem={({ item }) =>
                     <ItemRender
+                        id={item.id}
                         name={item.name}
                         difficulty={item.difficulty}
                         time={item.time}
@@ -124,17 +149,15 @@ const styles = StyleSheet.create({
     },
     view: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
     },
     text: {
         display: 'flex',
         flexDirection: 'column'
     },
     item: {
-        padding: 10,
+
         fontSize: 18,
-        height: 44,
-        margin: '3%'
+
     },
     info: {
         flexDirection: 'row',

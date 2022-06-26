@@ -1,18 +1,17 @@
+import { LinkContainer } from "react-router-bootstrap"
+
 const Header = () => {
     return (
-        <div className="header">
-            <div className="container">
-                <header>
-                    <div>
+        <LinkContainer to={`/`}>
+            <div className="header">
+                <div className="container">
+                    <header>
                         <img className="logo" src={require("../food.jpg")} />
-                    </div>
-                    <div className="items">
-                        <div className="items-els">Recipes</div>
-                        <div className="items-els">Favorites</div>
-                    </div>
-                </header>
+                        <div>Recipes</div>
+                    </header>
+                </div>
             </div>
-        </div>
+        </LinkContainer>
     )
 }
 
