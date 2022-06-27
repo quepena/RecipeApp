@@ -43,6 +43,17 @@ header {
   background-color: red;
 }
 
+.categories {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.category-item {
+  font-size: 25px;
+  margin-top: 2%;
+}
+
 .recipes-items {
   display: flex;
   justify-content: flex-start;

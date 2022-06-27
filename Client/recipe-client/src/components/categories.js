@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { categoriesList } from '../actions/recipesActions'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Categories = () => {
     // const dispatch = useDispatch();
@@ -13,30 +14,50 @@ const Categories = () => {
     //     dispatch(categoriesList())
     // }, [dispatch])
 
-    const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
+    // const [categoryId, setCategoryId] = useState('');
 
-    useEffect(() => {
-        const fetchCategories = async () => {
-            const { data } = await axios.get(`/api/categories`);
-            setCategories(data.result);
-        }
+    // const history = useNavigate();
 
-        fetchCategories();
-    }, [])
+    // useEffect(() => {
+    //     const fetchCategories = async () => {
+    //         console.log(categoryId);
+    //         const { data } = await axios.get(`/api/categories`);
+    //         setCategories(data.result);
+    //         console.log(data.result);
+    //     }
+    //     fetchCategories();
+    // }, [])
 
-    console.log(categories);
+    // const submitHandler = (e) => {
+    //     e.preventDefault()
+    //     console.log(categoryId);
+    //     if (categoryId.trim()) {
+    //         history(`/${categoryId}`);
+    //     } else {
+    //         history('/')
+    //     }
+    // }
+
+    // const handleClick = (e) => {
+    //     setCategoryId(e)
+    // }
+
+    // console.log(categories);
 
     return (
-        <div>
-            <div className='categories' style={{ backgroundColor: 'orange' }}>
-                {
-                    categories.map((item) => {
-                        <div key={item.id}>
-                            <h1>{item.name}</h1>
-                        </div>
-                    })
-                }
-            </div>
+        <div className='categories'>
+            {/* {
+                categories.map((item) => {
+                    return (
+                        <form onSubmit={submitHandler}>
+                            <button type='submit' className='category-item' key={item.id} onClick={handleClick(item.id)}>
+                                <div>{item.name}</div>
+                            </button>
+                        </form>
+                    )
+                })
+            } */}
         </div>
     )
 }
