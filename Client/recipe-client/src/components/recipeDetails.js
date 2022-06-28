@@ -26,13 +26,17 @@ const RecipeDetails = () => {
                 <div className='recipe-det-container'>
                     <img className='img-recipe-det' src={recipe.photo} />
                     <div className='recipe-det-items'>
-                        <h2>{recipe.name}</h2>
+                        <div className='recipe-det-items-name'>{recipe.name}</div>
                         <div className='recipe-items'>
                             <div><FontAwesomeIcon className='recipe-item' icon={faFaceLaugh} />{recipe.difficulty}</div>
                             <div><FontAwesomeIcon className='recipe-item' icon={faHourglass} />{recipe.time} min</div>
                             <div><FontAwesomeIcon className='recipe-item' icon={faBowlRice} />{recipe.servings}</div>
                             <div><FontAwesomeIcon className='recipe-item' icon={faFire} />{recipe.calories} kcal</div>
                         </div>
+                        <h1>Ingredients</h1>
+                        <div className='ingredients'>{recipe.ingredients}</div>
+                        <h1>Directions</h1>
+                        <div className='directions'>{recipe.directions}</div>
                     </div>
                 </div>
             )}

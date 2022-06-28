@@ -34,8 +34,6 @@ const RecipesList = () => {
         return false;
     };
 
-    console.log(recipes)
-
     const food = [
         {
             id: 1,

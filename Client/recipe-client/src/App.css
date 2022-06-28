@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
 body {
   margin: 0;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .container {
@@ -52,6 +55,16 @@ header {
 .category-item {
   font-size: 25px;
   margin-top: 2%;
+  border: 1px solid gainsboro;
+  border-radius: 5%;
+  padding: 1%;
+  color: #3d3d3d;
+}
+
+.category-item:hover {
+  border-color: darkgray;
+  background-color: darkgray;
+  color: white;
 }
 
 .recipes-items {
@@ -89,6 +102,20 @@ header {
   margin-right: 0.3em;
 }
 
+.recipe-det-items-name {
+  color: #3d3d3d;
+  font-size: 32px;
+  margin-top: 5%;
+  font-weight: 600;
+}
+
+.recipe-name {
+  color: #3d3d3d;
+  font-size: 28px;
+  margin-top: 2%;
+  font-weight: 600;
+}
+
 .recipe-det-container {
   display: flex;
   justify-content: space-between;
@@ -97,20 +124,29 @@ header {
 .img-recipe-det {
   height: 35%;
   width: 35%;
+  margin: 5% 5% 5% 0;
 }
 
 .recipe-det-items {
-  margin-bottom: 20%;
-  margin-right: 45%;
+  margin-bottom: 5%;
+  margin-right: 10%;
+  margin-top: 3%;
+}
+
+.recipe-det-items h1 {
+  font-size: 27px;
 }
 
 .recipe-items div {
+  font-size: 25px;
   border: 1px solid #8c8c8c;
   background-color: #8c8c8c;
-  border-radius: 20%;
-  padding: 5%;
   color: whitesmoke;
-  margin: 5%;
+  border-radius: 5%;
+  padding: 1%;
+  width: 6em;
+  height: 1.5em;
+  margin-right: 1%;
 }
 
 .recipe-items div .recipe-item {
@@ -135,4 +171,15 @@ input {
   font-size: 1.5rem;
   border: 1px solid #cfcfcf;
   border-radius: 0.25rem;
+}
+
+.ingredients {
+  font-size: 28px;
+  white-space: pre-wrap;
+  margin-bottom: 10%;
+}
+
+.directions {
+  font-size: 28px;
+  white-space: pre-wrap;
 }

@@ -7,10 +7,6 @@ import {
     RECIPE_DETAILS_REQUEST,
     RECIPE_DETAILS_SUCCESS,
     RECIPE_DETAILS_FAIL,
-
-    CATEGORIES_LIST_REQUEST,
-    CATEGORIES_LIST_SUCCESS,
-    CATEGORIES_LIST_FAIL,
 } from "../constants/recipesConstants"
 
 export const recipesList = () => async (dispatch) => {
@@ -48,26 +44,6 @@ export const recipeDetails = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: RECIPE_DETAILS_FAIL,
-            payload: error.response && error.response.data.message ? error.response.data.message : error.message
-        })
-    }
-}
-
-export const categoriesList = () => async (dispatch) => {
-    try {
-        dispatch({
-            type: CATEGORIES_LIST_REQUEST
-        })
-
-        const { data } = await axios.get(`/api/recipes/categories`);
-
-        dispatch({
-            type: CATEGORIES_LIST_SUCCESS,
-            payload: data.result
-        })
-    } catch (error) {
-        dispatch({
-            type: CATEGORIES_LIST_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }
