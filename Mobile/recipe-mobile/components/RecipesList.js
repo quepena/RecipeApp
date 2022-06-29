@@ -2,37 +2,15 @@ import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View, Image, SafeAreaView, Alert, TouchableWithoutFeedback } from 'react-native';
 import { recipesList, recipeAddToFavs, recipeDeleteFromFavs } from '../actions/recipesActions';
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigation } from '@react-navigation/native';
 
 const RecipesList = () => {
+    const navigation = useNavigation();
+
     const dispatch = useDispatch();
 
     const recipeList = useSelector(state => state.recipeList);
     const { loading, error, recipes } = recipeList;
-
-    const { favs } = useSelector(state => state.favReducer);
-
-    useEffect(() => {
-        dispatch(recipesList());
-    }, [dispatch])
-
-    const addToFavs = recipe => dispatch(addBookmark(recipe));
-    const removeFromFavs = recipe => dispatch(removeBookmark(recipe));
-
-    const handleAddFavs = recipe => {
-        addToFavs(recipe);
-    };
-
-    const handleRemoveFavs = recipe => {
-        removeFromFavs(recipe);
-    };
-
-    const ifExists = recipe => {
-        if (favs.filter(item => item.id === recipe.id).length > 0) {
-            return true;
-        }
-
-        return false;
-    };
 
     const food = [
         {
@@ -42,6 +20,9 @@ const RecipesList = () => {
             time: '150 minutes',
             servings: '2',
             calories: '720 kcal',
+            photo: require('../food.jpg'),
+            ingredients: '1 bla \n 2 bla \n 3 bla',
+            directions: '1 bla \n 2 bla \n 3 bla'
         },
         {
             id: 2,
@@ -50,6 +31,9 @@ const RecipesList = () => {
             time: '30 minutes',
             servings: '2',
             calories: '320 kcal',
+            photo: require('../food.jpg'),
+            ingredients: '1 bla \n 2 bla \n 3 bla',
+            directions: '1 bla \n 2 bla \n 3 bla'
         },
         {
             id: 3,
@@ -58,6 +42,9 @@ const RecipesList = () => {
             time: '100 minutes',
             servings: '2',
             calories: '400 kcal',
+            photo: require('../food.jpg'),
+            ingredients: '1 bla \n 2 bla \n 3 bla',
+            directions: '1 bla \n 2 bla \n 3 bla'
         },
         {
             id: 4,
@@ -66,6 +53,9 @@ const RecipesList = () => {
             time: '40 minutes',
             servings: '4',
             calories: '540 kcal',
+            photo: require('../food.jpg'),
+            ingredients: '1 bla \n 2 bla \n 3 bla',
+            directions: '1 bla \n 2 bla \n 3 bla'
         },
         {
             id: 5,
@@ -74,6 +64,9 @@ const RecipesList = () => {
             time: '30 minutes',
             servings: '3',
             calories: '500 kcal',
+            photo: require('../food.jpg'),
+            ingredients: '1 bla \n 2 bla \n 3 bla',
+            directions: '1 bla \n 2 bla \n 3 bla'
         },
         {
             id: 6,
@@ -82,6 +75,9 @@ const RecipesList = () => {
             time: '20 minutes',
             servings: '4',
             calories: '300 kcal',
+            photo: require('../food.jpg'),
+            ingredients: '1 bla \n 2 bla \n 3 bla',
+            directions: '1 bla \n 2 bla \n 3 bla'
         },
         {
             id: 7,
@@ -90,31 +86,11 @@ const RecipesList = () => {
             time: '20 minutes',
             servings: '2',
             calories: '330 kcal',
+            photo: require('../food.jpg'),
+            ingredients: '1 bla \n 2 bla \n 3 bla',
+            directions: '1 bla \n 2 bla \n 3 bla'
         }
     ];
-
-    const getItem = (name) => {
-        Alert.alert(name);
-    }
-
-    const ItemRender = ({ id, name, difficulty, time, servings, calories, photo }) => (
-        // <TouchableWithoutFeedback onPress={() => getItem(name)}>
-        <TouchableWithoutFeedback onPress={ifExists(getItem(id)) ? handleRemoveBookmark(getItem(id)) : handleAddBookmark(getItem(id))}>
-            <View style={styles.view}>
-                {/* <Image source={{uri: photo}} style={styles.img} /> */}
-                <Image source={require('../food.jpg')} style={styles.img} />
-                <View style={styles.text}>
-                    <Text style={styles.item}>{name}</Text>
-                    <View style={styles.info}>
-                        <Text>{difficulty}</Text>
-                        <Text>{time}</Text>
-                        <Text>{servings}</Text>
-                        <Text>{calories}</Text>
-                    </View>
-                </View>
-            </View>
-        </TouchableWithoutFeedback>
-    );
 
     return (
         <SafeAreaView style={styles.view}>
@@ -123,15 +99,32 @@ const RecipesList = () => {
                 // data={recipes}
                 data={food}
                 renderItem={({ item }) =>
-                    <ItemRender
-                        id={item.id}
-                        name={item.name}
-                        difficulty={item.difficulty}
-                        time={item.time}
-                        servings={item.servings}
-                        calories={item.calories}
-                        photo={item.photo}
-                    />}
+                    <TouchableWithoutFeedback onPress={() =>
+                        navigation.navigate('RecipeDetails', { 
+                            name: item.name, 
+                            difficulty: item.difficulty, 
+                            time: item.time, 
+                            servings: item.servings, 
+                            calories: item.calories, 
+                            photo: item.photo, 
+                            ingredients: item.ingredients, 
+                            directions: item.directions })
+                    }>
+                        <View style={styles.view}>
+                            {/* <Image source={{uri: photo}} style={styles.img} /> */}
+                            <Image source={item.photo} style={styles.img} />
+                            <View style={styles.text}>
+                                <Text style={styles.item}>{item.name}</Text>
+                                <View style={styles.info}>
+                                    <Text>{item.difficulty}</Text>
+                                    <Text>{item.time}</Text>
+                                    <Text>{item.servings}</Text>
+                                    <Text>{item.calories}</Text>
+                                </View>
+                            </View>
+                        </View>
+                    </TouchableWithoutFeedback>
+                }
                 keyExtractor={item => item.id}
             />
         </SafeAreaView>
