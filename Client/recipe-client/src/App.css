@@ -14,6 +14,9 @@ body {
 .header {
   text-align: center;
   background-color: #efefef;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 header {
@@ -28,6 +31,11 @@ header {
   height: 90px;
   width: 90px;
   margin: 3%;
+}
+
+.search {
+  margin-top: 15em;
+  width: 100%
 }
 
 .items {
@@ -119,6 +127,7 @@ header {
 .recipe-det-container {
   display: flex;
   justify-content: space-between;
+  margin-top: 8em;
 }
 
 .img-recipe-det {
@@ -182,4 +191,122 @@ input {
 .directions {
   font-size: 28px;
   white-space: pre-wrap;
+}
+
+@media (max-width: 1000px) {
+  .search {
+    margin-top: 9em;
+  }
+
+  .recipe-det-container {
+    margin-top: 8em;
+  }
+
+  .categories-container {
+    margin: 0 auto;
+  }
+
+  .categories {
+    flex-wrap: wrap;
+    font-size: 5px;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+  }
+
+  .categories button {
+    margin: 0.2em;
+  }
+
+  .recipe-container {
+    width: 45%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .recipe-det-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img-recipe-det {
+    width: 90%;
+    height: 90%;
+  }
+
+  .recipe-det-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .recipe-det-items-name {
+    text-align: center;
+  }
+
+  .recipe-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .recipe-items div {
+    font-size: 20px;
+    width: 8em;
+  }
+}
+
+@media (max-width: 800px) {
+  .recipe-det-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+  }
+
+  .recipe-items div {
+    font-size: 16px;
+    width: 6.5em;
+    margin-left: 2%;
+  }
+
+  .ingredients, .directions {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  input::placeholder, input {
+    font-size: 18px;
+  }
+
+  .categories button {
+    font-size: 18px;
+  }
+
+  .recipe-name {
+    font-size: 20px;
+  }
+
+  .recipe-det-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+  }
+
+  .recipe-items div {
+    font-size: 12px;
+    width: 6em;
+    margin-left: 1%;
+  }
+
+  .ingredients, .directions {
+    font-size: 18px;
+  }
 }
