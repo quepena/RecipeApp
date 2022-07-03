@@ -1,4 +1,4 @@
-Recipe App
+# Recipe App
 
 Node.js, Express, PostgreSQL, React, React Native
 
