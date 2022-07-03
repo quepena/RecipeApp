@@ -8,6 +8,12 @@ https://recipe-book-app-react.netlify.app/
 
 React Native App:
 
-![Screenshot](recipe-app-mobile1.jpg){width=200px}{height=365px}
+![](recipe-app-mobile1.jpg)
+![](recipe-app-mobile2.jpg)
 
-![Screenshot](recipe-app-mobile2.jpg =200x365)
+<style type="text/css">
+    img {
+        width: 200px;
+        height: 365px;
+    }
+</style>
