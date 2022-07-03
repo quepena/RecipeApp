@@ -2,14 +2,7 @@ import Sequelize from 'sequelize';
 import CategoryModel from './models/categoryModel.js';
 import RecipeModel from './models/recipeModel.js';
 
-const sequelize = new Sequelize(
-    process.env.DATABASE,
-    process.env.DATABASE_USER,
-    process.env.DATABASE_PASSWORD,
-    {
-        dialect: 'postgres',
-    },
-)
+const sequelize = new Sequelize(process.env.DB_URI)
 
 const models = {
     RecipeModel: RecipeModel(sequelize, Sequelize),
