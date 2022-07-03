@@ -1,15 +1,9 @@
 import { useState } from "react"
-import { View, Text, StyleSheet } from "react-native"
+import { View, StyleSheet } from "react-native"
 import RecipesList from "./RecipesList"
 import SearchBar from "./SearchBar"
 
 const RecipesScreen = () => {
-    // const [keyword, setKeyword] = useState('')
-
-    // const onKeyword = (keywordData) => {
-    //     setKeyword(keywordData)
-    // }
-
     const [event, setEvent] = useState('')
 
     const handleSearch = event => {

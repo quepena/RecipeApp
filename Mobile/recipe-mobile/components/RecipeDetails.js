@@ -1,5 +1,5 @@
-import { View, Text, Button, Image, StyleSheet, ScrollView, ImageBackground, Dimensions } from "react-native"
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { View, Text, StyleSheet, ScrollView, ImageBackground, Dimensions } from "react-native"
+import { useRoute } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const RecipeDetails = () => {
@@ -9,8 +9,8 @@ const RecipeDetails = () => {
         <View>
             <ScrollView>
                 <ImageBackground source={{uri: route.params.photo}} style={{ height: 0.45 * Dimensions.get("window").height }} />
-                <View style={{ width: 0.95 * Dimensions.get("window").width, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <View>
+                <View style={{ width: 0.95 * Dimensions.get("window").width }}>
+                    <View style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
                         <Text style={styles.name}>{route.params.name}</Text>
                         <View style={styles.info}>
                             <View style={{flexDirection: 'row'}}>
@@ -56,8 +56,9 @@ const styles = StyleSheet.create({
     info: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'flex-start', 
         alignItems: 'center',
+        marginLeft: 'auto',
         fontSize: 20,
     },
     instruction: {

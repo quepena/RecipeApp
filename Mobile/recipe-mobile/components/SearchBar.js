@@ -1,14 +1,7 @@
 import { View } from "react-native"
 import { TextInput, StyleSheet } from "react-native"
-import { useState } from "react"
-import { useNavigation } from "@react-navigation/native"
 
 const SearchBar = (props) => {
-    // const navigation = useNavigation();
-    const [keyword, setKeyword] = useState('')
-
-    // console.log(keyword);
-
     return (
         <View>
             <TextInput placeholder="Search" style={styles.input} onChangeText={(keyword) => { props.onKeyword(keyword)}}>

@@ -62,8 +62,3 @@ buck-out/
 # Expo
 .expo/*
 web-build/
-
-
-#for localhost
-actions/
-components/

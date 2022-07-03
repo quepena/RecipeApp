@@ -1,12 +1,9 @@
-import RootNavigator from "./components/RootNavigator";
 import { Provider } from "react-redux";
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './store';
+import { store } from './store';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import RecipesScreen from "./components/RecipesScreen";
-import RecipeDetails from "./components/RecipeDetails";
-import { Button } from "react-native";
+import RecipeDetails from "./components/RecipeDetails"
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Stack = createNativeStackNavigator();
@@ -22,9 +19,6 @@ export default function App() {
               title: route.params.name
             })} header={({ navigation }) => ({ left: <Icon name={'arrow-left'} onPress={() => { navigation.goBack() }} /> })} />
           </Stack.Navigator>
-          {/* <PersistGate loading={null} persistor={persistor}>
-          <RootNavigator />
-        </PersistGate> */}
         </NavigationContainer>
       </Provider>
     </>
