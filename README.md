@@ -8,10 +8,11 @@ https://recipe-book-app-react.netlify.app/
 
 React Native App:
 
-![pic][recipe-app-mobile1.jpg]{.classname}
-![pic][recipe-app-mobile2.jpg]{.classname}
+![pic][1]{.classname}
+![pic][2]{.classname}
 
-[logo]: (picurl)
+[1]: (recipe-app-mobile1.jpg)
+[2]: (recipe-app-mobile2.jpg)
 
 <style type="text/css">
     .classname{
