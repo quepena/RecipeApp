@@ -11,8 +11,8 @@ React Native App:
 ![pic][1]{.classname}
 ![pic][2]{.classname}
 
-[1]: (recipe-app-mobile1.jpg)
-[2]: (recipe-app-mobile2.jpg)
+[1]: ('recipe-app-mobile1.jpg')
+[2]: ('recipe-app-mobile2.jpg')
 
 <style type="text/css">
     .classname{
