@@ -2,14 +2,20 @@ import Sequelize from 'sequelize';
 import CategoryModel from './models/categoryModel.js';
 import RecipeModel from './models/recipeModel.js';
 
-const sequelize = new Sequelize(
-    process.env.DATABASE,
-    process.env.DATABASE_USER,
-    process.env.DATABASE_PASSWORD,
-    {
-        host: process.env.DATABASE_HOST,
-        dialect: 'postgres',
-    },
+const sequelize = new Sequelize({
+    database: process.env.DATABASE,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    host: process.env.DATABASE_HOST,
+    dialect: 'postgres',
+    ssl: true,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    }
+},
 )
 
 const models = {
