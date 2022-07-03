@@ -5,6 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "start": "nodemon API/server.js --exec babel-node",
     "server": "nodemon API/server.js --exec babel-node",
     "client": "cd Client/recipe-client && npm start",
     "mobile": "cd Mobile/recipe-mobile && npm start",
