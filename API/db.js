@@ -4,7 +4,7 @@ import RecipeModel from './models/recipeModel.js';
 
 const sequelize = new Sequelize({
     database: process.env.DATABASE,
-    user: process.env.DATABASE_USER,
+    username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     host: process.env.DATABASE_HOST,
     dialect: 'postgres',
