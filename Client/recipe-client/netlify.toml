@@ -1,20 +1,20 @@
 [[redirects]]
   from = "/api/categories/"
-  to = "https://recipe-book-app-react.herokuapp.com/api/categories/"
+  to = "https://expressjs-postgres-production-54d1.up.railway.app/api/categories/"
   status = 200
   force = true
   headers = {Access-Control-Allow-Origin = "*"}
 
 [[redirects]]
   from = "/api/recipes/"
-  to = "https://recipe-book-app-react.herokuapp.com/api/recipes/"
+  to = "https://expressjs-postgres-production-54d1.up.railway.app/api/recipes/"
   status = 200
   force = true
   headers = {Access-Control-Allow-Origin = "*"}
 
 [[redirects]]
   from = "/api/recipes/*"
-  to = "https://recipe-book-app-react.herokuapp.com/api/recipes/:splat"
+  to = "https://expressjs-postgres-production-54d1.up.railway.app/api/recipes/:splat"
   status = 200
   force = true
   headers = {Access-Control-Allow-Origin = "*"}
