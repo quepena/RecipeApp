@@ -1,6 +1,6 @@
 {
   "name": "recipe-client",
-  "proxy": "https://recipe-book-app-react.herokuapp.com",
+  "proxy": "https://expressjs-postgres-production-54d1.up.railway.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
