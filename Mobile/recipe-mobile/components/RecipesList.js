@@ -30,7 +30,7 @@ const RecipesList = (props) => {
     useEffect(() => {
         if (keyword) {
             const fetchRecipes = async (keyword) => {
-                const { data } = await axios.get(`https://recipe-book-app-react.herokuapp.com/api/recipes?keyword=${keyword}`,);
+                const { data } = await axios.get(`https://expressjs-postgres-production-54d1.up.railway.app/api/recipes?keyword=${keyword}`,);
                 setRecipesSearch(data.recipes);
             }
             fetchRecipes(keyword);
@@ -38,14 +38,14 @@ const RecipesList = (props) => {
         }
         else if (categoryId) {
             const fetchRecipesByCat = async (categoryId) => {
-                const { data } = await axios.get(`https://recipe-book-app-react.herokuapp.com/api/recipes?categoryId=${categoryId}`);
+                const { data } = await axios.get(`https://expressjs-postgres-production-54d1.up.railway.app/api/recipes?categoryId=${categoryId}`);
                 setRecipesCategory(data.recipes);
             }
             fetchRecipesByCat(categoryId);
         } else {
             dispatch(recipesList())
             const fetchCategories = async () => {
-                const { data } = await axios.get(`https://recipe-book-app-react.herokuapp.com/api/categories`);
+                const { data } = await axios.get(`https://expressjs-postgres-production-54d1.up.railway.app/api/categories`);
                 setCategories(data.result);
             }
             fetchCategories();

@@ -19,7 +19,7 @@ export const recipesList = () => async (dispatch) => {
             type: RECIPES_LIST_REQUEST
         })
 
-        const { data } = await axios.get(`https://recipe-book-app-react.herokuapp.com/api/recipes/`);
+        const { data } = await axios.get(`https://expressjs-postgres-production-54d1.up.railway.app/api/recipes/`);
 
         dispatch({
             type: RECIPES_LIST_SUCCESS,
